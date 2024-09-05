@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 import {
   Book,
   Users,
@@ -31,15 +32,11 @@ const HeroSection = () => (
         in one place.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
-        <Button size="lg" className="bg-white text-blue-600">
-          Login as Student
-        </Button>
-        <Button size="lg" className="bg-white text-blue-600">
-          Login as Teacher
-        </Button>
-        <Button size="lg" className="bg-white text-blue-600">
-          Login as Admin
-        </Button>
+        <Link href={"/login"}>
+          <Button size="lg" className="bg-white text-blue-600">
+            Login as Student
+          </Button>
+        </Link>
       </div>
     </div>
   </section>

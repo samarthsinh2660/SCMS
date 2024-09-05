@@ -7,8 +7,10 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center space-x-2">
-          <Book className="h-8 w-8 text-blue-600" />
-          <span className="font-bold text-xl">SCMS</span>
+            <Book className="h-8 w-8 text-blue-600" />
+          <Link href={"/"}>
+            <span className="font-bold text-xl">SCMS</span>
+          </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-4">
           <Link href={"/"}>
