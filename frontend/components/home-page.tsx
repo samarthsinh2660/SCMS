@@ -13,6 +13,11 @@ import {
   CheckCircle 
 } from "lucide-react"
 
+interface LoginModalProps {
+  role: string; // 'Student' | 'Teacher' | 'Admin' would be more specific
+  onClose: () => void;
+}
+
 const Header = () => (
   <header className="sticky top-0 z-50 w-full border-b bg-white">
     <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -188,7 +193,7 @@ const Footer = () => (
   </footer>
 )
 
-const LoginModal = ({ role, onClose }) => (
+const LoginModal: React.FC<LoginModalProps> = ({ role, onClose }) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <Card className="w-full max-w-md">
       <CardHeader>
@@ -218,13 +223,14 @@ const LoginModal = ({ role, onClose }) => (
       Close
     </Button>
   </div>
-)
+);
+
 
 export function HomePage() {
   const [loginModalOpen, setLoginModalOpen] = useState(false)
   const [loginRole, setLoginRole] = useState('')
 
-  const openLoginModal = (role) => {
+  const openLoginModal = (role: string) => {
     setLoginRole(role)
     setLoginModalOpen(true)
   }
