@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -18,7 +19,7 @@ export function SignupPage() {
     email: "",
     password: "",
   });
-
+  const router = useRouter();
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...user,
@@ -38,6 +39,7 @@ export function SignupPage() {
       const response = await axios.post(signupURL, userData);
       if (response.status === 200) {
         toast.success("Account Created 🎉");
+        router.push("/dashboard");
       } else {
         toast.error("Signup failed");
       }
