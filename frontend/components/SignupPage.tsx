@@ -37,6 +37,7 @@ export function SignupPage() {
       const response = await axios.post(signupURL, userData);
       if (response.status === 200) {
         toast.success("Account Created 🎉");
+        window.location.href = "https://scms-nu.vercel.app/student-dashboard";
       } else {
         toast.error("Signup failed");
       }
