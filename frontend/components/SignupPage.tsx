@@ -43,7 +43,7 @@ export function SignupPage() {
       }
     } catch (error) {
       toast.error("Signup Error");
-      console.log("Signup error:", error.response?.data || error.message);
+      console.log("Signup error:", error);
     } finally {
       setLoading(false); // Set loading to false once the submission is complete
     }
