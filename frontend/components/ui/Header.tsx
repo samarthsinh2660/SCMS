@@ -25,7 +25,9 @@ const Header = () => {
           <Link href={"/login"}>
             <Button variant="outline">Login</Button>
           </Link>
+          <Link href={"/signup"}>
           <Button>Sign Up</Button>
+          </Link>
         </div>
       </div>
     </header>

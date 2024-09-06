@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 import { UserIcon, UsersIcon, GraduationCapIcon } from "lucide-react";
 import Header from "@/components/ui/Header";
 export function LoginPage() {
@@ -55,9 +56,9 @@ export function LoginPage() {
 
           <p className="text-center mt-4 text-sm">
             {` Don't `}have an account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              Sign up
-            </a>
+            <Link href="/signup">
+              <span className="text-blue-600 hover:underline">Sign up</span>
+            </Link>
           </p>
         </div>
       </div>
