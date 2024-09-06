@@ -1,10 +1,12 @@
-require('dotenv').config();
-const express = require('express');
+import express from "express"
 const app = express();
-const cors = require('cors');
-const { Pool } = require('pg'); // Correctly import Pool from pg
-const connectToMongoDB = require("./config/db")
+import dotenv from "dotenv"
+import cors from 'cors'
+import pkg from 'pg';
+import { connectToMongoDB } from "./config/db.js";
 
+const { Pool } = pkg;
+dotenv.config();
 const PORT = 8080;
 const PORT2 = process.env.MONGO_PORT || 3030;
 
@@ -21,7 +23,7 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 
-// Test database connection
+
 app.get('/test', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM students');
@@ -31,7 +33,7 @@ app.get('/test', async (req, res) => {
   }
 });
 
-// Example API endpoint
+
 app.get('/api/home', (req, res) => {
   res.json({ message: 'hello world' });
 });
@@ -43,6 +45,6 @@ connectToMongoDB().then(() => {
 })
 
 app.listen(Pool, () => {
-  console.log("Sql Database is connected");
+  console.log("SQL Database is connected 🎉");
 });
 

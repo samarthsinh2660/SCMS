@@ -1,16 +1,17 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Progress } from "@/components/ui/progress"
+} from "@/components/ui/dropdown-menu";
+import { Progress } from "@/components/ui/progress";
 import {
   Book,
   FileText,
@@ -25,62 +26,23 @@ import {
   ChevronDown,
   Send,
   BookOpen,
-  Tools,
   GraduationCap,
-} from 'lucide-react'
-
+} from "lucide-react";
+import Header from "@/components/ui/Header";
 export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center">
-            <img src="/placeholder.svg?height=40&width=40" alt="SCMS Logo" className="h-10 w-10 mr-3" />
-            <h1 className="text-xl font-bold text-gray-900">SCMS</h1>
-          </div>
-          <nav className="hidden md:flex space-x-4">
-            <Button variant="ghost">Dashboard</Button>
-            <Button variant="ghost">Class Management</Button>
-            <Button variant="ghost">Assignments</Button>
-            <Button variant="ghost">Attendance</Button>
-            <Button variant="ghost">Messages</Button>
-          </nav>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="flex items-center space-x-2">
-                <Avatar>
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" alt={teacherName} />
-                  <AvatarFallback>{teacherName.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <span>{teacherName}</span>
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <HelpCircle className="mr-2 h-4 w-4" />
-                <span>Help</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Logout</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </header>
-
+      <Header />
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
         <section className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome, {teacherName}!</h2>
-          <p className="text-gray-600 mb-4">Manage your classes and students effortlessly.</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome, {teacherName}!
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Manage your classes and students effortlessly.
+          </p>
           <div className="flex flex-wrap gap-4">
             <Button variant="outline" className="flex items-center">
               <PlusCircle className="mr-2 h-4 w-4" />
@@ -104,15 +66,24 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
               <CardTitle>Your Classes</CardTitle>
             </CardHeader>
             <CardContent>
-              {['Mathematics 101', 'Physics 202', 'Chemistry 303'].map((subject, index) => (
-                <div key={index} className="flex justify-between items-center mb-4 last:mb-0">
-                  <div>
-                    <p className="font-medium">{subject}</p>
-                    <p className="text-sm text-gray-500">Next session: Today, {9 + index}:00 AM</p>
+              {["Mathematics 101", "Physics 202", "Chemistry 303"].map(
+                (subject, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between items-center mb-4 last:mb-0"
+                  >
+                    <div>
+                      <p className="font-medium">{subject}</p>
+                      <p className="text-sm text-gray-500">
+                        Next session: Today, {9 + index}:00 AM
+                      </p>
+                    </div>
+                    <Button size="sm" variant="outline">
+                      View
+                    </Button>
                   </div>
-                  <Button size="sm" variant="outline">View</Button>
-                </div>
-              ))}
+                )
+              )}
               <Button className="w-full mt-4">Manage Classes</Button>
             </CardContent>
           </Card>
@@ -129,21 +100,27 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
                     <p className="font-medium">Math Quiz</p>
                     <p className="text-sm text-gray-500">Due Soon</p>
                   </div>
-                  <Button size="sm" variant="outline">Edit</Button>
+                  <Button size="sm" variant="outline">
+                    Edit
+                  </Button>
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
                     <p className="font-medium">Physics Lab Report</p>
                     <p className="text-sm text-gray-500">Graded</p>
                   </div>
-                  <Button size="sm" variant="outline">View</Button>
+                  <Button size="sm" variant="outline">
+                    View
+                  </Button>
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
                     <p className="font-medium">Chemistry Essay</p>
                     <p className="text-sm text-gray-500">Pending Review</p>
                   </div>
-                  <Button size="sm" variant="outline">Review</Button>
+                  <Button size="sm" variant="outline">
+                    Review
+                  </Button>
                 </div>
               </div>
               <Button className="w-full">View All Assignments</Button>
@@ -186,7 +163,9 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
               <div className="space-y-4 mb-4">
                 <div>
                   <p className="font-medium">Top Performers</p>
-                  <p className="text-sm text-gray-500">John Doe, Jane Smith, Alex Johnson</p>
+                  <p className="text-sm text-gray-500">
+                    John Doe, Jane Smith, Alex Johnson
+                  </p>
                 </div>
                 <div>
                   <p className="font-medium">Needs Improvement</p>
@@ -205,7 +184,11 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
           </CardHeader>
           <CardContent>
             <ul className="space-y-4 mb-4">
-              {['New assignment question from student', 'Parent meeting request', 'Admin announcement'].map((message, index) => (
+              {[
+                "New assignment question from student",
+                "Parent meeting request",
+                "Admin announcement",
+              ].map((message, index) => (
                 <li key={index} className="flex items-center">
                   <MessageCircle className="h-5 w-5 mr-2 text-blue-500" />
                   <span>{message}</span>
@@ -220,15 +203,24 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
         <section className="mt-8">
           <h3 className="text-2xl font-semibold mb-4">Teaching Resources</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button variant="outline" className="h-32 flex flex-col items-center justify-center">
+            <Button
+              variant="outline"
+              className="h-32 flex flex-col items-center justify-center"
+            >
               <BookOpen className="h-8 w-8 mb-2" />
               Learning Materials
             </Button>
-            <Button variant="outline" className="h-32 flex flex-col items-center justify-center">
+            {/* <Button
+              variant="outline"
+              className="h-32 flex flex-col items-center justify-center"
+            >
               <Tools className="h-8 w-8 mb-2" />
               Teaching Tools
-            </Button>
-            <Button variant="outline" className="h-32 flex flex-col items-center justify-center">
+            </Button> */}
+            <Button
+              variant="outline"
+              className="h-32 flex flex-col items-center justify-center"
+            >
               <GraduationCap className="h-8 w-8 mb-2" />
               Professional Development
             </Button>
@@ -241,13 +233,23 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <nav className="flex space-x-4 mb-4 md:mb-0">
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Privacy Policy</a>
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Terms of Service</a>
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Help Center</a>
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Contact Us</a>
+              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                Terms of Service
+              </a>
+              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                Help Center
+              </a>
+              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                Contact Us
+              </a>
             </nav>
             <div className="flex items-center">
-              <span className="text-sm text-gray-500 mr-2">Help us improve our platform!</span>
+              <span className="text-sm text-gray-500 mr-2">
+                Help us improve our platform!
+              </span>
               <Button size="sm" className="flex items-center">
                 <Send className="mr-2 h-4 w-4" />
                 Give Feedback
@@ -257,5 +259,5 @@ export function TeacherDashboard({ teacherName = "Ms. Johnson" }) {
         </div>
       </footer>
     </div>
-  )
+  );
 }
