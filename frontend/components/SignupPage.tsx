@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { toast } from "react-hot-toast"; // Ensure correct import
+import { toast } from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { UserIcon, UsersIcon, GraduationCapIcon, Loader2 } from "lucide-react"; // Add loader icon here
+import { UserIcon, UsersIcon, GraduationCapIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
 import Header from "@/components/ui/Header";
 
 export function SignupPage() {
   const [selectedRole, setSelectedRole] = useState("Student");
-  const [loading, setLoading] = useState(false); // Manage loading state
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     fullName: "",
     email: "",
@@ -28,9 +28,9 @@ export function SignupPage() {
 
   const signupURL = "https://scms-r1bo.onrender.com/api/auth/signup";
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when form submission starts
+    setLoading(true);
 
     const userData = { ...user, role: selectedRole };
 
@@ -45,7 +45,7 @@ export function SignupPage() {
       toast.error("Signup Error");
       console.log("Signup error:", error);
     } finally {
-      setLoading(false); // Set loading to false once the submission is complete
+      setLoading(false);
     }
   };
 
@@ -63,13 +63,11 @@ export function SignupPage() {
                   variant={selectedRole === role ? "default" : "outline"}
                   className="flex-1 mx-1 flex flex-col items-center py-2"
                   onClick={() => setSelectedRole(role)}
-                  disabled={loading} // Disable the button while loading
+                  disabled={loading}
                 >
                   {role === "Teacher" && <UserIcon className="h-5 w-5 mb-1" />}
                   {role === "Admin" && <UsersIcon className="h-5 w-5 mb-1" />}
-                  {role === "Student" && (
-                    <GraduationCapIcon className="h-5 w-5 mb-1" />
-                  )}
+                  {role === "Student" && <GraduationCapIcon className="h-5 w-5 mb-1" />}
                   {role}
                 </Button>
               ))}
@@ -77,23 +75,23 @@ export function SignupPage() {
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="userId">Full Name</Label>
+                <Label htmlFor="fullName">Full Name</Label>
                 <Input
                   onChange={handleInput}
                   name="fullName"
-                  id="userId"
+                  id="fullName"
                   placeholder="Enter your Full Name"
-                  disabled={loading} // Disable input while loading
+                  disabled={loading}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="userId">Email</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                   onChange={handleInput}
                   name="email"
-                  id="userId"
+                  id="email"
                   placeholder="Enter your Email"
-                  disabled={loading} // Disable input while loading
+                  disabled={loading}
                 />
               </div>
               <div className="space-y-2">
@@ -104,7 +102,7 @@ export function SignupPage() {
                   id="password"
                   type="password"
                   placeholder="Enter your password"
-                  disabled={loading} // Disable input while loading
+                  disabled={loading}
                 />
               </div>
             </div>
@@ -113,10 +111,10 @@ export function SignupPage() {
               type="submit"
               className="w-full mt-6 flex justify-center"
               variant="default"
-              disabled={loading} // Disable the button while loading
+              disabled={loading}
             >
               {loading ? (
-                <Loader2 className="animate-spin h-5 w-5" /> // Show loader icon when loading
+                <Loader2 className="animate-spin h-5 w-5" />
               ) : (
                 "Sign up"
               )}
