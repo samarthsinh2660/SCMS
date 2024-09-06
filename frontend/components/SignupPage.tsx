@@ -26,7 +26,7 @@ export function SignupPage() {
     });
   };
 
-  const signupURL = "http://localhost:8080/api/auth/signup";
+  const signupURL = "https://scms-r1bo.onrender.com/api/auth/signup";
 
   const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
